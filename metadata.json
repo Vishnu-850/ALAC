@@ -1,0 +1,8 @@
+{
+  "name": "Language Agnostic Chatbot",
+  "description": "An intelligent multilingual NLP conversational assistant with automatic language detection, RAG knowledge grounding, and voice support.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
+
