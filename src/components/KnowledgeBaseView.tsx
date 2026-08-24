@@ -118,7 +118,7 @@ export const KnowledgeBaseView: React.FC = () => {
   });
 
   return (
-    <div id="kb-view-container" className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 bg-slate-50">
+    <div id="kb-view-container" className="flex-1 min-h-0 overflow-y-auto p-4 sm:p-6 lg:p-8 bg-slate-50">
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Banner Header */}
         <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">

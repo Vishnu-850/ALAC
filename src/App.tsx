@@ -113,7 +113,7 @@ I am your Language-Agnostic College Assistant. Ask me anything about Admissions,
   };
 
   return (
-    <div id="app-root" className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans antialiased">
+    <div id="app-root" className="h-screen w-screen overflow-hidden bg-slate-50 text-slate-900 flex flex-col font-sans antialiased">
       {/* Universal Navigation Header */}
       <Header
         activeTab={activeTab}
@@ -124,7 +124,7 @@ I am your Language-Agnostic College Assistant. Ask me anything about Admissions,
       />
 
       {/* Main Tab Views */}
-      <main id="main-content" className="flex-1 flex flex-col overflow-hidden">
+      <main id="main-content" className="flex-1 flex flex-col min-h-0 overflow-hidden relative">
         {activeTab === 'chat' && (
           <ChatView
             messages={messages}

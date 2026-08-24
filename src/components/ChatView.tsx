@@ -151,52 +151,52 @@ export const ChatView: React.FC<ChatViewProps> = ({
   };
 
   return (
-    <div id="chat-view-container" className="flex flex-col h-[calc(100vh-4rem)] bg-slate-50/50">
+    <div id="chat-view-container" className="flex-1 flex flex-col min-h-0 bg-slate-50/60 relative overflow-hidden">
       {/* Quick Regional Prompts Carousel */}
       <QuickPrompts onSelectPrompt={(text) => onSendMessage(text)} disabled={isLoading} />
 
       {/* Messages Scroll Area */}
-      <div id="chat-messages-area" className="flex-1 overflow-y-auto p-4 sm:p-6 max-w-5xl w-full mx-auto space-y-4">
+      <div id="chat-messages-area" className="flex-1 min-h-0 overflow-y-auto p-3 sm:p-5 md:p-6 max-w-4xl w-full mx-auto space-y-4">
         {messages.length === 0 && (
-          <div id="empty-state-card" className="my-8 p-8 bg-white border border-slate-200/80 rounded-2xl shadow-xs text-center max-w-2xl mx-auto">
-            <div className="w-12 h-12 bg-indigo-50 border border-indigo-100 rounded-2xl flex items-center justify-center text-indigo-600 mx-auto mb-4">
+          <div id="empty-state-card" className="my-6 p-6 sm:p-8 bg-white border border-slate-200/90 rounded-2xl shadow-xs text-center max-w-xl mx-auto">
+            <div className="w-12 h-12 bg-indigo-50 border border-indigo-100 rounded-2xl flex items-center justify-center text-indigo-600 mx-auto mb-3">
               <Globe className="w-6 h-6" />
             </div>
-            <h2 className="text-xl font-bold text-slate-900 mb-2">
+            <h2 className="text-lg sm:text-xl font-bold text-slate-900 mb-1.5">
               Language-Agnostic College Information Desk
             </h2>
-            <p className="text-sm text-slate-600 leading-relaxed mb-6">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5">
               Ask your questions in <strong>any language or script</strong> (Telugu, Hindi, Tamil, Kannada, Marathi, Bengali, Spanish, French, German, Hinglish, or English). No language setting change is required.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-left">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-left">
               <div className="p-3 bg-slate-50 border border-slate-100 rounded-xl">
-                <div className="font-semibold text-xs text-slate-900 mb-1 flex items-center gap-1.5">
+                <div className="font-semibold text-xs text-slate-900 mb-0.5 flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
-                  Auto Language Detection
+                  Auto-Detect
                 </div>
                 <p className="text-[11px] text-slate-500">
-                  Instant statistical & neural identification of script and dialect.
+                  Instant identification of script & dialect.
                 </p>
               </div>
 
               <div className="p-3 bg-slate-50 border border-slate-100 rounded-xl">
-                <div className="font-semibold text-xs text-slate-900 mb-1 flex items-center gap-1.5">
+                <div className="font-semibold text-xs text-slate-900 mb-0.5 flex items-center gap-1.5">
                   <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                  RAG Grounded Answers
+                  RAG Grounded
                 </div>
                 <p className="text-[11px] text-slate-500">
-                  Retrieves verified policies on admissions, fees, hostel, and exams.
+                  Verified college policies & fee structures.
                 </p>
               </div>
 
               <div className="p-3 bg-slate-50 border border-slate-100 rounded-xl">
-                <div className="font-semibold text-xs text-slate-900 mb-1 flex items-center gap-1.5">
+                <div className="font-semibold text-xs text-slate-900 mb-0.5 flex items-center gap-1.5">
                   <Mic className="w-3.5 h-3.5 text-blue-600" />
-                  Voice & Speech (TTS)
+                  Voice (TTS)
                 </div>
                 <p className="text-[11px] text-slate-500">
-                  Speak queries via microphone and hear answers in native speech.
+                  Native speech recognition & voice playback.
                 </p>
               </div>
             </div>
@@ -208,11 +208,11 @@ export const ChatView: React.FC<ChatViewProps> = ({
         ))}
 
         {isLoading && (
-          <div id="chat-loading-indicator" className="flex items-center gap-3 p-4 bg-white border border-slate-200 rounded-2xl max-w-md shadow-xs animate-pulse">
-            <Loader2 className="w-5 h-5 text-indigo-600 animate-spin" />
-            <div className="text-xs text-slate-600">
+          <div id="chat-loading-indicator" className="flex items-center gap-3 p-3.5 bg-white border border-slate-200 rounded-2xl max-w-md shadow-xs animate-pulse">
+            <Loader2 className="w-4 h-4 text-indigo-600 animate-spin shrink-0" />
+            <div className="text-xs text-slate-600 min-w-0">
               <p className="font-semibold text-slate-800">Processing Language & Knowledge Pipeline...</p>
-              <p className="text-[11px] text-slate-500">Detecting language • Searching RAG database • Synthesizing response</p>
+              <p className="text-[11px] text-slate-500 truncate">Detecting language • Searching RAG database • Synthesizing response</p>
             </div>
           </div>
         )}
@@ -221,7 +221,7 @@ export const ChatView: React.FC<ChatViewProps> = ({
       </div>
 
       {/* Input & Control Box */}
-      <div id="chat-input-container" className="bg-white border-t border-slate-200 p-4 sticky bottom-0">
+      <div id="chat-input-container" className="bg-white border-t border-slate-200 px-3 sm:px-4 py-2.5 sm:py-3 shrink-0 shadow-xs">
         <div className="max-w-4xl mx-auto">
           {/* Error Banner */}
           {speechError && (
@@ -232,7 +232,7 @@ export const ChatView: React.FC<ChatViewProps> = ({
           )}
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="relative flex flex-col gap-2">
+          <form onSubmit={handleSubmit} className="relative flex flex-col gap-1.5">
             <div className="relative flex items-center">
               <textarea
                 id="chat-input-textarea"
@@ -241,18 +241,18 @@ export const ChatView: React.FC<ChatViewProps> = ({
                 onChange={(e) => setInputText(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="Type or speak query in Telugu, Hindi, Tamil, Spanish, Hinglish, English, etc..."
-                className="w-full pl-4 pr-24 py-3 bg-slate-50 hover:bg-slate-50/80 focus:bg-white border border-slate-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 rounded-2xl text-sm text-slate-900 placeholder:text-slate-400 resize-none transition-all outline-hidden"
+                className="w-full pl-3.5 pr-20 py-2.5 bg-slate-50 hover:bg-slate-50/80 focus:bg-white border border-slate-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 rounded-xl text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 resize-none transition-all outline-hidden min-h-[50px] max-h-[120px]"
               />
 
               {/* In-Input Buttons (Mic & Send) */}
-              <div className="absolute right-3 flex items-center gap-1.5">
+              <div className="absolute right-2.5 flex items-center gap-1.5">
                 {/* Voice Input Button */}
                 <button
                   type="button"
                   id="btn-voice-input"
                   onClick={toggleVoiceInput}
                   title={isListening ? 'Stop listening' : 'Speak your query in your language'}
-                  className={`p-2 rounded-xl border transition-all ${
+                  className={`p-1.5 sm:p-2 rounded-lg border transition-all ${
                     isListening
                       ? 'bg-rose-500 text-white border-rose-600 animate-bounce'
                       : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-100 hover:text-indigo-600'
@@ -266,7 +266,7 @@ export const ChatView: React.FC<ChatViewProps> = ({
                   type="submit"
                   id="btn-send-message"
                   disabled={!inputText.trim() || isLoading}
-                  className="p-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-2xs"
+                  className="p-1.5 sm:p-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-2xs"
                   title="Send message"
                 >
                   <Send className="w-4 h-4" />
@@ -276,25 +276,25 @@ export const ChatView: React.FC<ChatViewProps> = ({
 
             {/* Bottom Bar: Live Detection Pill & Chat Controls */}
             <div className="flex items-center justify-between px-1 text-[11px]">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 min-w-0">
                 {liveLang && inputText.trim().length > 2 && (
                   <span
                     id="live-input-lang-badge"
-                    className="inline-flex items-center gap-1 text-indigo-700 font-medium bg-indigo-50 px-2 py-0.5 rounded-md border border-indigo-100 animate-fadeIn"
+                    className="inline-flex items-center gap-1 text-indigo-700 font-medium bg-indigo-50 px-2 py-0.5 rounded-md border border-indigo-100 animate-fadeIn truncate"
                   >
                     <span>{liveLang.flag}</span>
-                    <span>Detected: <strong>{liveLang.name}</strong> ({liveLang.script} Script)</span>
+                    <span className="truncate">Detected: <strong>{liveLang.name}</strong> ({liveLang.script} Script)</span>
                   </span>
                 )}
                 {isListening && (
-                  <span className="text-rose-600 font-medium flex items-center gap-1 animate-pulse">
-                    <span className="w-2 h-2 rounded-full bg-rose-600"></span>
-                    Listening to voice... Speak now
+                  <span className="text-rose-600 font-medium flex items-center gap-1 animate-pulse truncate">
+                    <span className="w-1.5 h-1.5 rounded-full bg-rose-600 shrink-0"></span>
+                    Listening to voice...
                   </span>
                 )}
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 shrink-0">
                 {messages.length > 0 && (
                   <button
                     type="button"
@@ -303,10 +303,10 @@ export const ChatView: React.FC<ChatViewProps> = ({
                     className="inline-flex items-center gap-1 text-slate-400 hover:text-rose-600 transition-colors"
                   >
                     <Trash2 className="w-3 h-3" />
-                    <span>Clear Conversation</span>
+                    <span>Clear</span>
                   </button>
                 )}
-                <span className="text-slate-400 hidden sm:inline">Press Enter to Send</span>
+                <span className="text-slate-400 hidden sm:inline">Enter ↵ to send</span>
               </div>
             </div>
           </form>

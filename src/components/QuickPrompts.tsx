@@ -96,16 +96,13 @@ const SAMPLE_PROMPTS: PromptSample[] = [
 
 export const QuickPrompts: React.FC<QuickPromptsProps> = ({ onSelectPrompt, disabled }) => {
   return (
-    <div id="quick-prompts-container" className="py-2.5 px-4 bg-slate-50/80 border-b border-slate-200">
+    <div id="quick-prompts-container" className="py-2 px-3 sm:px-4 bg-slate-50 border-b border-slate-200 shrink-0 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="flex items-center gap-2 mb-2">
-          <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-700">
-            <Globe2 className="w-3.5 h-3.5 text-indigo-600" />
-            <span>Test Language-Agnostic Regional Prompts:</span>
+        <div className="flex items-center justify-between gap-2 mb-1.5">
+          <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-700">
+            <Globe2 className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
+            <span className="truncate">Sample Regional Prompts (Click to test zero-config detection):</span>
           </div>
-          <span className="text-[11px] text-slate-500 hidden sm:inline">
-            (Click any query to see zero-configuration automatic detection & response)
-          </span>
         </div>
 
         <div id="prompt-chips-carousel" className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-thin">
@@ -116,14 +113,14 @@ export const QuickPrompts: React.FC<QuickPromptsProps> = ({ onSelectPrompt, disa
               disabled={disabled}
               onClick={() => onSelectPrompt(sample.query)}
               title={`${sample.lang}: ${sample.englishMeaning}`}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-indigo-300 hover:bg-indigo-50/50 text-left text-xs text-slate-800 transition-all shrink-0 shadow-2xs hover:shadow-xs group disabled:opacity-50 disabled:cursor-not-allowed"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-slate-200 hover:border-indigo-300 hover:bg-indigo-50/50 text-left text-xs text-slate-800 transition-all shrink-0 shadow-2xs group disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <span className="text-sm">{sample.flag}</span>
-              <span className="font-semibold text-indigo-700 text-[11px] group-hover:underline">
+              <span className="text-xs">{sample.flag}</span>
+              <span className="font-semibold text-indigo-700 text-[11px] group-hover:underline shrink-0">
                 {sample.lang}
               </span>
-              <span className="text-slate-400 text-[10px]">|</span>
-              <span className="truncate max-w-[200px] text-slate-600 group-hover:text-slate-900">
+              <span className="text-slate-300 text-[10px]">|</span>
+              <span className="truncate max-w-[180px] sm:max-w-[240px] text-slate-600 text-[11px] group-hover:text-slate-900">
                 {sample.query}
               </span>
             </button>
